@@ -76,7 +76,7 @@
         android:id="@+id/NazwaCwicenia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="..."
+        android:text="Losuj ćwiczenie"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
