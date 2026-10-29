@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         ButtonClickPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (NazwaCw.getText().toString().equals("Losuj ćwiczenie")) {
+                    return;
+                }
                 counter++;
                 LSerii.setText("" + counter);
             }
