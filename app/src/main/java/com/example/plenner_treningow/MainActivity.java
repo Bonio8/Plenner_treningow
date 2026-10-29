@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView LacznaLSerii;
     private ImageView ZdjCwicen;
     private Button ButtonClickLosuj;
+    private Button NastempneCwiczenie;
     private int counter = 0;
+    private int lacznaLS = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         LacznaLSerii = findViewById(R.id.LacznaLiczbaSerii);
         ZdjCwicen = findViewById(R.id.cwiczeniaZdj);
         ButtonClickLosuj = findViewById(R.id.losCwiczenie);
+        NastempneCwiczenie = findViewById(R.id.nastCwicz);
 
         ButtonClickPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButtonClickReset.setOnClickListener(v -> {
             counter = 0;
+            lacznaLS = 0;
             NazwaCw.setText("Losuj ćwiczenie");
             LacznaLSerii.setText("Łączna liczba serii: 0");
             ZdjCwicen.setImageResource(R.drawable.cwiczenie0);
@@ -95,6 +99,34 @@ public class MainActivity extends AppCompatActivity {
             };
             ZdjCwicen.setImageResource(zdjecia[wylosowanaLiczba]);
             NazwaCw.setText(nazwaCwicenia[wylosowanaLiczba]);
+            counter = 0;
+            LSerii.setText(String.valueOf(counter));
+        });
+
+        NastempneCwiczenie.setOnClickListener(v -> {
+            lacznaLS += counter;
+            LacznaLSerii.setText("Łączna liczba serii: " + lacznaLS);
+            Random random = new Random();
+            int wylosowanaLiczba = random.nextInt(6);
+            int zdjecia[] = {
+                    R.drawable.cwiczenie1,
+                    R.drawable.cwiczenie2,
+                    R.drawable.cwiczenie3,
+                    R.drawable.cwiczenie4,
+                    R.drawable.cwiczenie5,
+                    R.drawable.cwiczenie6
+            };
+            String nazwaCwicenia[] ={
+                    "Przysiad",
+                    "Pompki",
+                    "Plank",
+                    "Wykroki",
+                    "Burpees",
+                    "Podciąganie"
+            };
+            ZdjCwicen.setImageResource(zdjecia[wylosowanaLiczba]);
+            NazwaCw.setText(nazwaCwicenia[wylosowanaLiczba]);
+
             counter = 0;
             LSerii.setText(String.valueOf(counter));
         });
